@@ -1,0 +1,9 @@
+sudo: required
+services: 
+  - docker
+
+before_install:
+  - docker build -t docker-react-poc -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true docker-react-poc npm run test
